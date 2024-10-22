@@ -103,7 +103,8 @@ When set to ``True``, also acknowledge unsuccessful tasks. This causes failed ta
 max_attempts
 ~~~~~~~~~~~~~
 
-Limit the number of retry attempts for failed tasks. Set to 0 for infinite retries. Defaults to 0
+Limit the number of attempts for tasks. Set to 0 for infinite retries. Defaults to 0.
+
 
 
 .. _retry:
@@ -478,9 +479,9 @@ ALT_CLUSTERS
 ~~~~~~~~~~~~
 
 For multiple clusters working on multiple queues to run in one Django site.
-ALT_CLUSTERS should be a dict with cluster_name as its key, and the value is the configuration for the cluster
+ALT_CLUSTERS should be a dict with name as its key, and the value is the configuration for the cluster
 with the key as its name. The configuration items are consistent with Q_CLUSTER,
-except for a few items such as name/cluster_name/ALT_CLUSTER, which are not available of course.
+except for a few items such as ``name`` and ``ALT_CLUSTERS``, which are not available of course.
 
 See :ref:`multiple-queues`.
 

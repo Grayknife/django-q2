@@ -52,10 +52,10 @@ You can have multiple clusters on multiple machines, working on the same queue a
 - They use the same cluster name. See :doc:`configure`
 - They share the same ``SECRET_KEY`` for Django.
 
-.. _multiple-queues
+.. _multiple-queues:
 
 Multiple Queues
------------------
+---------------
 You can have multiple queues in one Django site, and use multiple cluster to work on each queue.
 Different queues are identified by different queue names which are also cluster names.
 To run an alternate cluster, e.g. to work on the 'long' queue, start your cluster with command::
