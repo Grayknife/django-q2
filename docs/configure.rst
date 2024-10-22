@@ -347,7 +347,9 @@ To use MongoDB as a message broker you simply provide the connection information
         'queue_limit': 100,
         'mongo': {
             'host': '127.0.0.1',
-            'port': 27017
+            'port': 27017,
+            'serverSelectionTimeoutMS': 5_000,
+            'connect': False # with ``pymongo>=4.9`` connect=True (which is the default) raises a warning because of forked child processes
         }
     }
 
@@ -357,7 +359,7 @@ If you want to use a mongodb uri, you can supply it as the ``host`` parameter.
 mongo_db
 ~~~~~~~~
 When using the MongoDB broker you can optionally provide a database name to use for the queues.
-Defaults to default database if available, otherwise ``django-q``
+Defaults to default database if available, otherwise ``django-q``.
 
 .. _broker_class:
 
@@ -479,15 +481,15 @@ ALT_CLUSTERS
 ~~~~~~~~~~~~
 
 For multiple clusters working on multiple queues to run in one Django site.
-ALT_CLUSTERS should be a dict with name as its key, and the value is the configuration for the cluster
-with the key as its name. The configuration items are consistent with Q_CLUSTER,
+``ALT_CLUSTERS`` should be a dict with the name of the cluster as its key, and the value is the configuration dictionary for the cluster.
+The configuration items are consistent with Q_CLUSTER,
 except for a few items such as ``name`` and ``ALT_CLUSTERS``, which are not available of course.
 
 See :ref:`multiple-queues`.
 
 .. note::
 
-    For a cluster, if its name is in ALT_CLUSTERS, the config item in ALT_CLUSTER will override
+    For a cluster, if its name is in ``ALT_CLUSTERS``, the config item in ``ALT_CLUSTERS`` will override
     the same config item in the Q_CLUSTER root. Other config items in Q_CLUSTER root remain in effect for this cluster.
 
 
